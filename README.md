@@ -1,34 +1,34 @@
-# MSFS Texture Downscale Tool (v1.0)
+# MSFS Texture Downscale Tool (v1.1)
 
 ## Overview
 
-The **MSFS Texture Downscale Tool** is a Python-based graphical application designed to simplify the process of downscaling high-resolution `.dds` textures used in Microsoft Flight Simulator (MSFS) addons. This tool automatically detects textures larger than or equal to `8192x8192` resolution and downsizes them to a maximum resolution of `4096x4096` using bilinear resizing.
+The **MSFS Texture Downscale Tool** is a Python-based graphical user interface (GUI) tool designed to help Microsoft Flight Simulator (MSFS) addon creators and users easily manage and downscale high-resolution `.dds` textures. The tool detects large textures (above 8K resolution) and allows you to resize them to a target resolution (default 4K) for better performance and compatibility with MSFS.
+
+Version: **v1.1**
 
 ---
 
 ## Features
 
-- **Graphical User Interface (GUI):**
-  - User-friendly interface built with Tkinter.
-- **Texture Detection:**
-  - Automatically scans for `.dds` textures exceeding `8192x8192` in the selected folder.
-- **Batch Processing:**
-  - Processes multiple textures using multiprocessing for efficiency.
-- **Progress Feedback:**
-  - Includes a progress bar to show the processing status.
-- **Safety:**
-  - Skips invalid or corrupted `.dds` files to prevent crashes.
+- **Graphical User Interface (GUI):** Simple and intuitive interface built with Tkinter.
+- **Texture Detection & Listing:** Automatically scans selected directories for `.dds` textures and displays them in a table with their name and resolution.
+- **Texture Downscaling:** Resizes high-resolution textures to a manageable size (4K or lower) while preserving important details.
+- **Adaptive Resolution Handling:** Handles textures above 32K by scaling down to 16K and textures between 16K and 8K by scaling to 8K, before downscaling to 4K.
+- **Progress Tracking:** Displays progress via a progress bar during texture processing.
+- **Folder Selection & Scanning:** Easy folder selection to locate textures and scan them efficiently.
+- **Clear Button:** Clears the list of textures and resets the state.
+- **Error Handling:** Handles errors while reading or processing files and shows informative messages.
 
 ---
 
 ## Prerequisites
 
-1. **Python:** Ensure Python 3.8+ is installed.
+1. **Python:** Python 3.8+ is required.
 2. **Dependencies:** Install the required Python libraries:
    ```bash
    pip install -r requirements.txt
    ```
-3. **Tkinter:** Comes pre-installed with most Python distributions. If not, install it via your package manager (e.g., `sudo apt-get install python3-tk` on Ubuntu).
+3. **Tkinter:** Tkinter is typically included with Python but can be installed separately on some systems (e.g., `sudo apt-get install python3-tk` on Ubuntu).
 
 ---
 
@@ -36,10 +36,17 @@ The **MSFS Texture Downscale Tool** is a Python-based graphical application desi
 
 1. Clone or download the repository:
    ```bash
-   git clone https://github.com/creepcomp/msfs-texture-downscale-tool.git
+   git clone https://github.com/your-username/msfs-texture-downscale-tool.git
    cd msfs-texture-downscale-tool
    ```
-2. Install dependencies as listed above.
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run the tool:
+   ```bash
+   python MSFSTextureDownscaleTool.py
+   ```
 
 ---
 
@@ -50,44 +57,36 @@ The **MSFS Texture Downscale Tool** is a Python-based graphical application desi
     ```
 2. Build it via this command.
     ```bash
-    nuitka.exe .\MSFSTextureDownscaleTool.py --windows-icon-from-ico=.\icon.ico --enable-plugin=tk-inter --windows-console-mode=disable --standalone --output-dir=output/v1.0
+    nuitka.exe .\MSFSTextureDownscaleTool.py --windows-icon-from-ico=.\icon.ico --enable-plugin=tk-inter --windows-console-mode=disable --standalone --output-dir=output/v1.1
     ```
 
 ---
 
 ## Usage
 
-1. Run the tool:
-   ```bash
-   python MSFSTextureDownscaleTool.py
-   ```
-2. **Select Folder:**
-   - Use the **Browse** button to choose the directory containing `.dds` textures.
-3. **Scan for Textures:**
-   - Click **Scan for Textures** to list all high-resolution `.dds` textures.
-4. **Process Textures:**
-   - Click **Process** to begin downscaling. The progress bar will indicate the status.
-5. **Completion:**
-   - Upon completion, a message box will notify that all textures have been processed.
+1. **Select Folder:** Use the **Browse** button to choose the directory containing your `.dds` textures.
+2. **Scan Textures:** Click **Scan** to list all the textures found in the selected folder.
+3. **Clear List:** Click **Clear** to remove all the textures from the list.
+4. **Process Textures:** Click **Process** to start downscaling. The progress bar will update during processing.
+5. **Completion:** Once all textures have been processed, a success message will appear.
 
 ---
 
-## Notes
+## Changelog
 
-- Ensure you have adequate storage and backup for your textures before processing.
-- The tool modifies textures in place. If you need original textures, make backups prior to using the tool.
-
----
-
-## Contribution
-
-If you would like to contribute, feel free to fork the repository and submit a pull request. Suggestions, bug reports, and feature requests are also welcome!
+### v1.1 (Release Date: November 2024)
+- **New Feature:** Adaptive downscaling logic for ultra-high-resolution textures (32K and 16K) to 16K and 8K before resizing to 4K.
+- **New Feature:** Added a clear button to reset the texture list.
+- **Improvement:** Added resolution info in the texture listing, including file size in KB.
+- **UI Update:** Improved layout for better user experience.
+- **Bug Fix:** Enhanced error handling for reading and processing textures.
+- **Other:** Updated to handle larger texture files more efficiently.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 ---
 
@@ -97,3 +96,9 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 - **Developer:** Creepcomp
 
 Thank you for using the **MSFS Texture Downscale Tool**! 🎉
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
